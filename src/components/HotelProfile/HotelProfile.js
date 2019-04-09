@@ -1,7 +1,7 @@
 import './HotelProfile.css'
 import React from '../../../node_modules/react'
 import greyStarIcon from '../../static/images/grey-star.png'
-import locationDropIcon from '../../static/images/location-drop-icon.png'
+import locationDropIcon from '../../static/images/grey-location-drop-icon.png'
 import phoneIcon from '../../static/images/phone-icon.png'
 import thumbsUpIcon from '../../static/images/thumbs-up.png'
 

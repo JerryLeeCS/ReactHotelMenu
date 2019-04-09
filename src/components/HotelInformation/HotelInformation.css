@@ -53,3 +53,13 @@
 .detail-description {
     color: rgb(75, 75, 75);
 }
+
+.location-map {
+    width: 100%;
+    object-fit: cover;
+}
+
+.location-drop-icon {
+    width: 16px;
+    vertical-align: text-bottom;
+}

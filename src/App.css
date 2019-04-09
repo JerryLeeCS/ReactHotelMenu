@@ -34,8 +34,19 @@
 .hotel-profile-picture {
   width: 100%;
   margin-bottom: 24px;
+  object-fit: cover;
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 .purple-text {
   color: rgb(155, 108, 155);
+}
+
+.back-icon {
+  width: 15px;
+  vertical-align: text-bottom;
+  margin-right: 4px;
 }

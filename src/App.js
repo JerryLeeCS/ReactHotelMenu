@@ -7,7 +7,7 @@ import venetians from './api/venetian.json'
 import HotelList from './components/HotelList/HotelList.js'
 import HotelProfile from './components/HotelProfile/HotelProfile.js'
 import HotelInformation from './components/HotelInformation/HotelInformation.js'
-import VenetianPicture from './static/images/venetian.jpg'
+import leftButtonIcon from './static/images/purple-left-arrow.png'
 
 class App extends Component {
   constructor(){
@@ -37,6 +37,7 @@ class App extends Component {
     this.setState({
       hotelInformation: result
     })
+    
   }
 
   render() {
@@ -44,11 +45,11 @@ class App extends Component {
       <div className="App">
         <div className="paper-container">
           <div className="grid-layout">
-            <div className="top-navigation-bar purple-text">
-              <span>SEE ALL LAS VEGAS</span>
+            <div className="top-navigation-bar purple-text clickable">
+              <span><img className="back-icon" src={leftButtonIcon} />SEE ALL LAS VEGAS</span>
             </div>
             <div className="left-col">
-              <img className="hotel-profile-picture" src={VenetianPicture} />
+              <img className="hotel-profile-picture" src={this.state.hotelInformation.media[0].href} />
               <HotelList list={this.state.hotelList} />
             </div>
             <div className="right-col">

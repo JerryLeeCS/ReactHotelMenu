@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './HotelInformation.css'
 import purpleDownArrow from '../../static/images/purple-down-arrow.png'
+import locationDropIcon from '../../static/images/black-location-drop-icon.png'
+
 export default class HotelInformation extends Component {
   constructor(){
     super()
@@ -58,6 +60,15 @@ export default class HotelInformation extends Component {
     return details
   }
 
+  formatLocation() {
+    return (
+      <div>
+        <div><img className="location-drop-icon" src={locationDropIcon } />{this.props.hotelInformation.location.address},{this.props.hotelInformation.location.city}, {this.props.hotelInformation.location.state} {this.props.hotelInformation.location.postalCode}</div>
+        <img className="location-map" src={this.props.hotelInformation.media[1].href} />
+      </div>
+    )
+  }
+
   toggleReadMore() {
     this.setState({
       readMore: !this.state.readMore
@@ -75,7 +86,7 @@ export default class HotelInformation extends Component {
         )
         break
       case 2:
-        tabContent = <div>Location</div>
+        tabContent = <div>{this.formatLocation()}</div>
         break
       default:
         tabContent = (
