@@ -1,0 +1,29 @@
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(156, 114, 153);
+    height: 48px;
+}
+
+.tab {
+    position: relative;
+    cursor: pointer;
+}
+
+.tab-name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.tab-highlighted {
+    border-bottom-color: purple;
+    border-bottom-width: 4px;
+    border-bottom-style: solid;
+}
+
+.flex-1 {
+    flex: 1;
+}
