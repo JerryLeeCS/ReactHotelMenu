@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import './App.css'
 import getAllHotels from './api/getAllHotels.js'
 import getHotelInformation from './api/getHotelInformation.js'
-import hotels from './api/hotels.json'
 import venetians from './api/venetian.json'
 import HotelList from './components/HotelList/HotelList.js'
 import HotelProfile from './components/HotelProfile/HotelProfile.js'
@@ -14,9 +13,13 @@ class App extends Component {
     super();
     this.getAllHotels = this.getAllHotels.bind(this)
     this.getHotelInformation = this.getHotelInformation.bind(this)
+    this.setActiveTab = this.setActiveTab.bind(this)
+    this.toggleReadMore = this.toggleReadMore.bind(this)
     this.state = {
       hotelList: [],
-      hotelInformation: venetians
+      hotelInformation: venetians,
+      activeTab: 0,
+      readMore: false
     }
   }
 
@@ -37,7 +40,19 @@ class App extends Component {
     this.setState({
       hotelInformation: result
     })
-    
+  }
+
+  setActiveTab(tab) {
+    this.setState({
+      activeTab: tab,
+      readMore: false
+    })
+  }
+
+  toggleReadMore() {
+    this.setState({
+      readMore: !this.state.readMore
+    })
   }
 
   render() {
@@ -53,8 +68,14 @@ class App extends Component {
               <HotelList list={this.state.hotelList} />
             </div>
             <div className="right-col">
-              <HotelProfile hotelInformation={this.state.hotelInformation} /> 
-              <HotelInformation hotelInformation={this.state.hotelInformation} />
+              <HotelProfile setActiveTab={this.setActiveTab} hotelInformation={this.state.hotelInformation} /> 
+              <HotelInformation
+              activeTab={this.state.activeTab}
+              readMore={this.state.readMore} 
+              hotelInformation={this.state.hotelInformation}
+              setActiveTab={this.setActiveTab}
+              toggleReadMore={this.toggleReadMore}
+               />
           </div>
           </div>
         </div>

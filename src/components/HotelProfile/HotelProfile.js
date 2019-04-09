@@ -14,12 +14,12 @@ export default function HotelProfile(props) {
           <div className="flex-container flex-horizontal">
             <div id="hotel-name">{props.hotelInformation.name.toUpperCase()}</div>
             <div className="star-container">{[...Array(Math.ceil(props.hotelInformation.starRating))].map((e, i) => (
-              <img className="grey-star icon" src={greyStarIcon} />
+              <img className="grey-star icon" src={greyStarIcon} key={i} />
             ))}
             </div>
           </div>
           <div className="flex-container flex-horizontal">
-            <div className="margin-right-8">
+            <div onClick={() => props.setActiveTab(2)} className="margin-right-8 clickable">
               <img className="icon" src={locationDropIcon} />
               {props.hotelInformation.location.areaName}
             </div>

@@ -6,55 +6,43 @@ import locationDropIcon from '../../static/images/black-location-drop-icon.png'
 export default class HotelInformation extends Component {
   constructor(){
     super()
-    this.setActiveTab = this.setActiveTab.bind(this)
-    this.state = {
-      activeTab: 0,
-      readMore: false
-    }
-  }
-
-  setActiveTab(tab) {
-    this.setState({
-      activeTab: tab,
-      readMore: false
-    })
   }
 
   formatDescription() {
-    let description =  this.props.hotelInformation.description.split("\r\n\r\n").map((val) => (
-      <div className="margin-bottom-24">{val}</div>
+    let description =  this.props.hotelInformation.description.split("\r\n\r\n").map((val, index) => (
+      <div className="margin-bottom-24" key={index}>{val}</div>
     ))
 
 
-    if(this.state.readMore){
+    if(this.props.readMore){
       description.push(
-        <div onClick={() => this.toggleReadMore()} className="show-full-description"> SHOW LESS DESCRIPTION <img className="down-arrow" src={purpleDownArrow} /></div>
+        <div onClick={() => this.props.toggleReadMore()} className="show-full-description"> SHOW LESS DESCRIPTION <img className="down-arrow" src={purpleDownArrow} /></div>
       )
     }else{
       description = description.splice(0, 2)
       description.push(
-        <div onClick={() => this.toggleReadMore()} className="show-full-description"> SHOW FULL DESCRIPTION <img className="down-arrow" src={purpleDownArrow} /></div>
+        <div onClick={() => this.props.toggleReadMore()} className="show-full-description"> SHOW FULL DESCRIPTION <img className="down-arrow" src={purpleDownArrow} /></div>
       )
     }
       return description
   }
 
   formatDetails() {
-    let details = this.props.hotelInformation.details.map((val) => (
-      <div className="margin-bottom-24">
-        <div className="detail-label">{val.label}</div>
+    let details = this.props.hotelInformation.details.map((val, index) => (
+      <div className="margin-bottom-24" key={index}>
+        <div className="detail-label">{val.label}:</div>
         <div className="detail-description">{val.value}</div>
       </div>
     ))
 
-    if(this.state.readMore){
+    if(this.props.readMore){
       details.push(
-        <div onClick={() => this.toggleReadMore()} className="show-full-description"> SHOW LESS DETAILS <img className="down-arrow" src={purpleDownArrow} /></div>
+        <div onClick={() => this.props.toggleReadMore()} className="show-full-description"> SHOW LESS DETAILS <img className="down-arrow" src={purpleDownArrow} /></div>
       ) 
     }else{
       details = details.splice(0, 2)
       details.push(
-        <div onClick={() => this.toggleReadMore()} className="show-full-description"> SHOW FULL DETAILS <img className="down-arrow" src={purpleDownArrow} /></div>
+        <div onClick={() => this.props.toggleReadMore()} className="show-full-description"> SHOW FULL DETAILS <img className="down-arrow" src={purpleDownArrow} /></div>
       )
     }
     return details
@@ -69,17 +57,11 @@ export default class HotelInformation extends Component {
     )
   }
 
-  toggleReadMore() {
-    this.setState({
-      readMore: !this.state.readMore
-    })
-  }
-
   render() {
 
     let tabContent
 
-    switch (this.state.activeTab) {
+    switch (this.props.activeTab) {
       case 1:
         tabContent = (
           <div>{this.formatDetails()}</div>
@@ -100,15 +82,15 @@ export default class HotelInformation extends Component {
     return (
       <div id="hotel-information">
         <div className="tabs">
-          <div onClick={() => this.setActiveTab(0)} className={this.state.activeTab === 0 ? "tab-highlighted tab flex-1" : "tab flex-1"}>
+          <div onClick={() => this.props.setActiveTab(0)} className={this.props.activeTab === 0 ? "tab-highlighted tab flex-1" : "tab flex-1"}>
             <span className="tab-name">DESCRIPTION</span>            
           </div>
 
-          <div onClick={() => this.setActiveTab(1)} className={this.state.activeTab === 1 ? "tab-highlighted tab flex-1" : "tab flex-1"}>
+          <div onClick={() => this.props.setActiveTab(1)} className={this.props.activeTab === 1 ? "tab-highlighted tab flex-1" : "tab flex-1"}>
             <span className="tab-name">DETAILS</span>
           </div>
 
-          <div onClick={() => this.setActiveTab(2)} className={this.state.activeTab === 2 ? "tab-highlighted tab flex-1" : "tab flex-1"}>
+          <div onClick={() => this.props.setActiveTab(2)} className={this.props.activeTab === 2 ? "tab-highlighted tab flex-1" : "tab flex-1"}>
             <span className="tab-name">LOCATION</span>
           </div>
         </div>
