@@ -24,6 +24,32 @@
     border-bottom-style: solid;
 }
 
+.tab-content {
+    padding: 12px;
+}
+
 .flex-1 {
     flex: 1;
+}
+
+.margin-bottom-24 {
+    margin-bottom: 24px;
+}
+
+.show-full-description {
+    color: purple;
+    cursor: pointer;
+}
+
+.show-full-description .down-arrow {
+    width: 14px;
+    vertical-align: text-bottom;
+}
+
+.detail-label {
+    font-weight: bold;
+}
+
+.detail-description {
+    color: rgb(75, 75, 75);
 }
