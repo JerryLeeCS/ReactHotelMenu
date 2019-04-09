@@ -19,24 +19,26 @@ export default class HotelInformation extends Component {
   }
 
   formatDescription() {
-    const description =  this.props.hotelInformation.description.split("\r\n\r\n").map((val) => (
+    let description =  this.props.hotelInformation.description.split("\r\n\r\n").map((val) => (
       <div className="margin-bottom-24">{val}</div>
     ))
 
 
     if(this.state.readMore){
-      return description
+      description.push(
+        <div onClick={() => this.toggleReadMore()} className="show-full-description"> SHOW LESS DESCRIPTION <img className="down-arrow" src={purpleDownArrow} /></div>
+      )
     }else{
-      let shortDescription = description.splice(0, 2)
-      shortDescription.push(
+      description = description.splice(0, 2)
+      description.push(
         <div onClick={() => this.toggleReadMore()} className="show-full-description"> SHOW FULL DESCRIPTION <img className="down-arrow" src={purpleDownArrow} /></div>
       )
-      return shortDescription
     }
+      return description
   }
 
   formatDetails() {
-    const details = this.props.hotelInformation.details.map((val) => (
+    let details = this.props.hotelInformation.details.map((val) => (
       <div className="margin-bottom-24">
         <div className="detail-label">{val.label}</div>
         <div className="detail-description">{val.value}</div>
@@ -44,15 +46,16 @@ export default class HotelInformation extends Component {
     ))
 
     if(this.state.readMore){
-      return details
+      details.push(
+        <div onClick={() => this.toggleReadMore()} className="show-full-description"> SHOW LESS DETAILS <img className="down-arrow" src={purpleDownArrow} /></div>
+      ) 
     }else{
-      let shortDetails = details.splice(0, 2)
-      shortDetails.push(
+      details = details.splice(0, 2)
+      details.push(
         <div onClick={() => this.toggleReadMore()} className="show-full-description"> SHOW FULL DETAILS <img className="down-arrow" src={purpleDownArrow} /></div>
       )
-      return shortDetails
     }
-
+    return details
   }
 
   toggleReadMore() {
