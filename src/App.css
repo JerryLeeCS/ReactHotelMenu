@@ -1,3 +1,7 @@
+*{
+  font-size: 14px;
+}
+
 .App {
   min-height: 100vh;
   background: lightgray;
@@ -12,11 +16,13 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 36px;
+  margin-bottom: 36px;
 }
 
 .grid-layout {
   display: grid;
   grid-template-columns: 25% auto;
+  grid-column-gap: 24px;
   height: 100%;
 }
 
@@ -25,10 +31,11 @@
   height: 24px;
 }
 
-.left-col {
-  background-color: pink;
+.hotel-profile-picture {
+  width: 100%;
+  margin-bottom: 24px;
 }
 
-.right-col {
-  background-color: blue;
+.purple-text {
+  color: rgb(155, 108, 155);
 }

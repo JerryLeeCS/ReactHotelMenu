@@ -1,23 +1,49 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
+import getAllHotels from './api/getAllHotels.js'
+import hotels from './api/hotels.json'
+import venetians from './api/venetian.json'
+import HotelList from './components/HotelList/HotelList.js'
+import HotelProfile from './components/HotelProfile/HotelProfile.js'
+import HotelInformation from './components/HotelInformation/HotelInformation.js'
+import VenetianPicture from './static/images/venetian.jpg'
 
 class App extends Component {
+  constructor(){
+    super();
+    this.getAllHotels = this.getAllHotels.bind(this)
+    this.state = {
+      hotelList: [],
+      hotelInformation: venetians
+    }
+  }
+
+  componentWillMount(){
+    this.getAllHotels()
+  }
+
+  async getAllHotels() {
+    const result = await getAllHotels()
+    this.setState({
+      hotelList: result
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <div className="paper-container">
           <div className="grid-layout">
-            <div className="top-navigation-bar">
-              SEE ALL LAS VEGAS HOTELS
+            <div className="top-navigation-bar purple-text">
+              <span>SEE ALL LAS VEGAS</span>
             </div>
             <div className="left-col">
-              <div>img container might replace with just image later</div>
-              <div>list</div>
+              <img className="hotel-profile-picture" src={VenetianPicture} />
+              <HotelList list={this.state.hotelList} />
             </div>
             <div className="right-col">
-              <div>hotel profile</div>
-              <div>hotel information component</div>
+              <HotelProfile hotelInformation={this.state.hotelInformation} /> 
+              <HotelInformation hotelInformation={this.state.hotelInformation} />
           </div>
           </div>
         </div>
@@ -26,4 +52,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App

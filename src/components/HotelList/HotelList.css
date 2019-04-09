@@ -1,0 +1,20 @@
+#hotel-list {
+    background: rgb(238, 238, 238);
+    padding: 8px;
+}
+
+.hotel-item {
+    display: flex;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.hotel-name {
+    flex: 1;
+    color: rgb(155, 108, 155);
+}
+
+.hotel-price {
+    color: rgb(80, 80, 80);
+}
